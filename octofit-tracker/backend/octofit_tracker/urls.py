@@ -43,6 +43,7 @@ def api_root(request):
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', api_root, name='api_root'),
-    path('', include(router.urls)),
+    # Mount API under /api/ so requests like /api/activities/ resolve correctly
+    path('api/', api_root, name='api_root'),
+    path('api/', include(router.urls)),
 ]
